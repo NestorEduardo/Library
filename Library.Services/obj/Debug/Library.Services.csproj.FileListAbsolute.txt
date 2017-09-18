@@ -1,0 +1,5 @@
+C:\Users\nesto\OneDrive\Documentos\Library\Library.Services\bin\Debug\Library.Services.dll
+C:\Users\nesto\OneDrive\Documentos\Library\Library.Services\bin\Debug\Library.Services.pdb
+C:\Users\nesto\OneDrive\Documentos\Library\Library.Services\obj\Debug\Library.Services.csprojResolveAssemblyReference.cache
+C:\Users\nesto\OneDrive\Documentos\Library\Library.Services\obj\Debug\Library.Services.dll
+C:\Users\nesto\OneDrive\Documentos\Library\Library.Services\obj\Debug\Library.Services.pdb

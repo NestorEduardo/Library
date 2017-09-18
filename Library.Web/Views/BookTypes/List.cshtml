@@ -1,5 +1,5 @@
 ﻿@using Library.Domain.Entities
-@model IEnumerable<BookType>
+@model Library.Web.Models.BookTypesListViewModel
 
 
 @{
@@ -8,10 +8,15 @@
 
 <h2>Book types</h2>
 
-@foreach (var bookType in Model)
+@foreach (var bookType in Model.BookTypes)
 {    <div>
         <h3>@bookType.Description</h3>
     </div>
 }
+
+<div>
+    @Html.PageLinks(Model.PagingInfo, x => Url.Action("List", new { page = x }))
+</div>
+
 
 

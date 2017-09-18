@@ -1,4 +1,5 @@
 ﻿using Library.Domain.Abstract;
+using Library.Web.Models;
 using System.Linq;
 using System.Web.Mvc;
 
@@ -12,17 +13,25 @@ namespace Library.Web.Controllers
 
         public BookTypesController(IBookTypeRepository bookTypeRepository)
         {
-            this.repository = bookTypeRepository;
-        }
-
-        public ViewResult List()
-        {
-            return View(repository.BookTypes);
+            repository = bookTypeRepository;
         }
 
         public ViewResult List(int page = 1)
         {
-            return View(repository.BookTypes.OrderBy(bt => bt.BookTypeID).Skip((page - 1) * PageSize).Take(PageSize));
+            BookTypesListViewModel model = new BookTypesListViewModel
+            {
+                BookTypes = repository.BookTypes.OrderBy(p => p.BookTypeID).Skip((page - 1) * PageSize).Take(PageSize),
+
+                PagingInfo = new PagingInfo
+                {
+                    CurrentPage = page,
+                    ItemsPerPage = PageSize,
+                    TotalItems = repository.BookTypes.Count()
+                }
+            };
+
+            return View(model);
+
         }
     }
 }

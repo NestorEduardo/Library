@@ -4,15 +4,27 @@
     ViewBag.Title = "Book Types";
 }
 
-<h2>Book types</h2>
+<link href="~/Content/Site.css" rel="stylesheet" />
 
-@foreach (var bookTypes in Model.BookTypes)
-{
-    @Html.Partial("BookTypeSummary", bookTypes)
-}
 
-<div class="btn btn-group pull-right">
-    @Html.PageLinks(Model.PagingInfo, x => Url.Action("List", new { page = x }))
+<div class="container">
+    <h2>Booktypes</h2>
+
+    <p>
+        @Html.ActionLink("Add", "Add", null, new { @class = "btn btn-primary" })
+    </p> 
+
+    <div>
+
+        @foreach (var bookTypes in Model.BookTypes)
+        {
+            @Html.Partial("BookTypeSummary", bookTypes)
+        }
+    </div>
+
+    <div class="pull-right">
+        @Html.PageLinks(Model.PagingInfo, x => Url.Action("List", new { page = x }))
+    </div>
 </div>
 
 

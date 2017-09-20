@@ -9,16 +9,21 @@ namespace Library.Web
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
-            routes.MapRoute
-                (name: null,
-                url: "Page{page}",
-                defaults: new { Controller = "BookTypes", action = "List" });
+            routes.MapRoute(
+                "BookTypes",
+                "{controller}/{action}/{id}",
+                new { controller = "BookTypes", action = "List", id = UrlParameter.Optional });
 
             routes.MapRoute(
-          "Default", // Route name
-          "",        // URL with parameters
-          new { controller = "Home", action = "Index" }  // Parameter defaults
-      );
+                "BookTypesNavigation",
+                  "{controller}Page{page}",
+                  new { controller = "BookTypes", action = "List", id = UrlParameter.Optional });
+
+            routes.MapRoute(
+                "Default",
+                "",
+                new { controller = "Home", action = "Index" });
         }
     }
 }
+

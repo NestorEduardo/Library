@@ -15,10 +15,10 @@ namespace Library.Web
                 defaults: new { Controller = "BookTypes", action = "List" });
 
             routes.MapRoute(
-                name: "Default",
-                url: "{controller}/{action}/{id}",
-                defaults: new { controller = "BookTypes", action = "List", id = UrlParameter.Optional }
-            );
+          "Default", // Route name
+          "",        // URL with parameters
+          new { controller = "Home", action = "Index" }  // Parameter defaults
+      );
         }
     }
 }

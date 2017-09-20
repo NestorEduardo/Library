@@ -1,6 +1,4 @@
-﻿@using Library.Domain.Entities
-@model Library.Web.Models.BookTypesListViewModel
-
+﻿@model Library.Web.Models.BookTypesListViewModel
 
 @{
     ViewBag.Title = "Book Types";
@@ -8,12 +6,9 @@
 
 <h2>Book types</h2>
 
-@foreach (var bookType in Model.BookTypes)
-{    <div class="well">
-        <h4>
-            <strong>@bookType.Description</strong>
-    </h4>
-</div>
+@foreach (var bookTypes in Model.BookTypes)
+{
+    @Html.Partial("BookTypeSummary", bookTypes)
 }
 
 <div class="btn btn-group pull-right">

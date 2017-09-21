@@ -1,31 +1,31 @@
 ﻿@model Library.Web.Models.BookTypesListViewModel
 
 @{
-    ViewBag.Title = "Book Types";
+    ViewBag.Title = "BookTypes";
 }
 
 <link href="~/Content/Site.css" rel="stylesheet" />
-
 
 <div class="container">
     <h2>Booktypes</h2>
 
     <p>
-        @Html.ActionLink("Add", "Add", null, new { @class = "btn btn-primary" })
-    </p> 
+        @Html.ActionLink("Add", "Create", null, new { @class = "btn btn-primary" })
+    </p>
+            @foreach (var bookTypes in Model.BookTypes)
+            {
 
-    <div>
+                <div class="col-xs-10 col-sm-10 col-lg-10 col-md-10 well well-sm">
 
-        @foreach (var bookTypes in Model.BookTypes)
-        {
-            @Html.Partial("BookTypeSummary", bookTypes)
-        }
-    </div>
+                    @Html.Partial("BookTypeSummary", bookTypes)
+                </div>
 
+            }
+
+        </div>
+        
+<div class="container">
     <div class="pull-right">
         @Html.PageLinks(Model.PagingInfo, x => Url.Action("List", new { page = x }))
     </div>
 </div>
-
-
-

@@ -5,7 +5,6 @@
 <link href="~/Content/Site.css" rel="stylesheet" />
 
 <div class="container margin-top-20">
-
     <!-- Static navbar -->
     <nav class="navbar navbar-default">
         <div class="container-fluid">
@@ -26,8 +25,15 @@
             </div><!--/.nav-collapse -->
         </div><!--/.container-fluid -->
     </nav>
+    @if (TempData["message"] != null)
+    {
+        <div class="alert alert-success">
+            @TempData["message"]
+        </div>
+    }
 </div>
 
 <div>
+
     @RenderBody()
 </div>

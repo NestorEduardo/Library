@@ -1,0 +1,40 @@
+﻿@model Library.Domain.Entities.BookType
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<div class="container">
+    <div class="panel">
+        <div class="panel-heading">
+            <h3>Edit the @Model.Description booktype</h3>
+        </div>
+
+        @using (Html.BeginForm("Edit", "BookTypes"))
+        {
+            <div class="panel-body">
+                @Html.HiddenFor(m => m.BookTypeID)
+                @foreach (var property in ViewData.ModelMetadata.Properties)
+                {
+                    if (property.PropertyName != "BookTypeID")
+                    {
+                        <div class="form-group">
+                            <label>@(property.DisplayName ?? property.PropertyName)</label>
+
+                            @if (property.PropertyName == "Description")
+                        {
+                                @Html.TextBox(property.PropertyName, null, new { @class = "form-control" })
+                            }
+                        </div>
+                    }
+
+                    @Html.ValidationMessage(property.PropertyName)
+                }
+            </div>
+            <div class="panel-footer">
+                <input type="submit" value="Save" class="btn btn-primary" />
+                @Html.ActionLink("Cancel and return to List", "List", null, new { @class = "btn btn-success" })
+            </div>
+        }
+    </div>
+</div>

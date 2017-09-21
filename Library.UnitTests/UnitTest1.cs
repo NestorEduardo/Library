@@ -105,5 +105,120 @@ namespace Library.UnitTests
             Assert.Equal(pageInfo.TotalItems, 11);
             Assert.Equal(pageInfo.TotalPages, 4);
         }
+
+        [Fact]
+        public void CanEditBookType()
+        {
+            // Arrange
+            Mock<IBookTypeRepository> mock = new Mock<IBookTypeRepository>();
+            mock.Setup(m => m.BookTypes).Returns(new BookType[] {
+                new BookType {BookTypeID = 1, Description = "Science fiction"},
+                new BookType {BookTypeID = 2, Description = "Satire"},
+                new BookType {BookTypeID = 3, Description = "Drama"},
+                new BookType {BookTypeID = 4, Description = "Romance"},
+            });
+
+            // Arrange
+            BookTypesController target = new BookTypesController(mock.Object);
+
+            // Act
+            BookType bookType1 = target.Edit(1).ViewData.Model as BookType;
+            BookType bookType2 = target.Edit(2).ViewData.Model as BookType;
+            BookType bookType3 = target.Edit(3).ViewData.Model as BookType;
+
+            // Assert
+            Assert.Equal(1, bookType1.BookTypeID);
+            Assert.Equal("Satire", bookType2.Description);
+        }
+
+        [Fact]
+        public void CannotEditNonexistentBookType()
+        {
+            // Arrange
+            Mock<IBookTypeRepository> mock = new Mock<IBookTypeRepository>();
+            mock.Setup(m => m.BookTypes).Returns(new BookType[] {
+                new BookType {BookTypeID = 1, Description = "Science fiction"},
+                new BookType {BookTypeID = 2, Description = "Satire"},
+                new BookType {BookTypeID = 3, Description = "Drama"},
+                new BookType {BookTypeID = 4, Description = "Romance"},
+            });
+
+            // Arrange
+            BookTypesController target = new BookTypesController(mock.Object);
+
+            // Act
+            BookType bookType1 = target.Edit(5).ViewData.Model as BookType;
+
+            // Assert
+            Assert.Null(bookType1);
+        }
+
+        [Fact]
+        public void CanSaveValidChanges()
+        {
+            // Arrange
+            Mock<IBookTypeRepository> mock = new Mock<IBookTypeRepository>();
+            BookTypesController target = new BookTypesController(mock.Object);
+            BookType bookType = new BookType { Description = "Romance" };
+
+            // Act - try to save the booktype.
+            ActionResult result = target.Edit(bookType);
+
+            // Assert - check that the repository was called
+            mock.Verify(m => m.SaveBookType(bookType));
+
+            // Assert - check the method result type
+            Assert.IsNotType(typeof(ViewResult), result);
+        }
+
+        [Fact]
+        public void CannotSaveInvalidChanges()
+        {
+            // Arrange - create mock repository
+            Mock<IBookTypeRepository> mock = new Mock<IBookTypeRepository>();
+
+            // Arrange - create the controller
+            BookTypesController target = new BookTypesController(mock.Object);
+
+            // Arrange - create a booktype
+            BookType bookType = new BookType { Description = "Test" };
+
+            // Arrange - add an error to the model state
+            target.ModelState.AddModelError("error", "error");
+
+            // Act - try to save the product
+            ActionResult result = target.Edit(bookType);
+
+            // Assert - check that the repository was not called
+            mock.Verify(m => m.SaveBookType(It.IsAny<BookType>()), Times.Never());
+
+            // Assert - check the method result type
+            Assert.IsType(typeof(ViewResult), result);
+        }
+
+        [Fact]
+        public void CanDeleteValidValidBookTypes()
+        {
+            // Arrange - create a BookType
+            BookType bookType = new BookType { BookTypeID = 2, Description = "Test" };
+
+            // Arrange - create the mock repository
+            Mock<IBookTypeRepository> mock = new Mock<IBookTypeRepository>();
+            mock.Setup(m => m.BookTypes).Returns(new BookType[]
+            {
+                new BookType {BookTypeID = 1, Description = "P1"}, bookType,
+                new BookType {BookTypeID = 3, Description = "P3"},
+            });
+
+            // Arrange - create the controller
+            BookTypesController target = new BookTypesController(mock.Object);
+
+            // Act - delete the booktype
+            target.Delete(bookType.BookTypeID);
+
+            // Assert - ensure that the repository delete method was
+            // called with the correct BookType
+            mock.Verify(m => m.DeleteBookType(bookType.BookTypeID)); 
+        }
     }
 }

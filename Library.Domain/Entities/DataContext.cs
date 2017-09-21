@@ -4,6 +4,6 @@ namespace Library.Domain.Entities
 {
     class DataContext : DbContext
     {
-        public DbSet<BookType> Products { get; set; }
+        public DbSet<BookType> BookTypes { get; set; }
     }
 }

@@ -11,7 +11,7 @@ using Xunit;
 
 namespace Library.UnitTests
 {
-    public class UnitTest1
+    public class BookTypeTests
     {
         [Fact]
         public void CanPaginate()

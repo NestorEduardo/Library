@@ -7,5 +7,7 @@ namespace Library.Domain.Entities
         public DbSet<BookType> BookTypes { get; set; }
 
         public DbSet<Writer> Writers { get; set; }
+
+        public DbSet<Book> Books { get; set; }
     }
 }

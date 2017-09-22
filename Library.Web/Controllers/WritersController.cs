@@ -11,8 +11,6 @@ namespace Library.Web.Controllers
     {
         private IWriterRepository repository;
         public int PageSize = 4;
-        private string imageMimeType;
-        private byte[] imageData;
 
         public WritersController(IWriterRepository writerRepository)
         {

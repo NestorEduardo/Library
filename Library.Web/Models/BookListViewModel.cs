@@ -3,9 +3,9 @@ using System.Collections.Generic;
 
 namespace Library.Web.Models
 {
-    public class WriterListViewModel
+    public class BookListViewModel
     {
-        public IEnumerable<Writer> Writers { get; set; }
+        public IEnumerable<Book> Books { get; set; }
 
         public PagingInfo PagingInfo { get; set; }
     }

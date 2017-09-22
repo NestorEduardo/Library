@@ -33,6 +33,7 @@ namespace Library.Web.Infrastructure
         {
             kernel.Bind<IBookTypeRepository>().To<EFBookTypeRepository>();
             kernel.Bind<IWriterRepository>().To<EFWriterRepository>();
+            kernel.Bind<IBookRepository>().To<EFBookRepository>();
         }
     }
 }

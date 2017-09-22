@@ -69,10 +69,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Abstract\IBookTypeRepository .cs" />
-    <Compile Include="Class1.cs" />
+    <Compile Include="Abstract\IWriterRepository.cs" />
     <Compile Include="Concrete\EFBookTypeRepository.cs" />
+    <Compile Include="Concrete\EFWriterRepository.cs" />
     <Compile Include="Entities\BookType.cs" />
     <Compile Include="Entities\DataContext.cs" />
+    <Compile Include="Entities\Writer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

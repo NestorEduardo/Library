@@ -20,6 +20,16 @@ namespace Library.Web
                   new { controller = "BookTypes", action = "List", id = UrlParameter.Optional });
 
             routes.MapRoute(
+                "Writers",
+                "{controller}/{action}/{id}",
+                new { controller = "Writers", action = "List", id = UrlParameter.Optional });
+
+            routes.MapRoute(
+                "WritersNavigation",
+                  "{controller}Page{page}",
+                  new { controller = "Writers", action = "List", id = UrlParameter.Optional });
+
+            routes.MapRoute(
                 "Default",
                 "",
                 new { controller = "Home", action = "Index" });

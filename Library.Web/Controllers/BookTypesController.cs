@@ -20,7 +20,7 @@ namespace Library.Web.Controllers
         {
             BookTypesListViewModel model = new BookTypesListViewModel
             {
-                BookTypes = repository.BookTypes.OrderBy(p => p.BookTypeID).Skip((page - 1) * PageSize).Take(PageSize),
+                BookTypes = repository.BookTypes.OrderBy(bt => bt.BookTypeID).Skip((page - 1) * PageSize).Take(PageSize),
 
                 PagingInfo = new PagingInfo
                 {
@@ -68,7 +68,7 @@ namespace Library.Web.Controllers
                 TempData["message"] = string.Format("{0} was deleted", deletedBookType.Description);
             }
 
-            return RedirectToAction("Index");
+            return RedirectToAction("List");
         }
     }
 }

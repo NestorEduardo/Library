@@ -1,12 +1,15 @@
 ﻿@model Library.Domain.Entities.BookType
 
-<div class="">
-            <h4>
-                @Model.Description
-            </h4>
-
+    <h4>
+        @Model.Description
+    </h4>
     <div class="col-xs-2 col-sm-2 col-lg-2 col-md-2 pull-right">
-        @Html.ActionLink("Edit", "Edit", new { bookTypeId = Model.BookTypeID}, new { @class = "btn btn-warning" })
-        @Html.ActionLink("Delete", "Delete", null, new { @class = "btn btn-danger" })
+
+        @using (Html.BeginForm("Delete", "BookTypes"))
+        {
+            @Html.Hidden("BookTypeID", Model.BookTypeID)
+            @Html.ActionLink("Edit", "Edit", new { bookTypeId = Model.BookTypeID }, new { @class = "btn btn-warning" })
+            <input type="submit" class="btn btn-danger" value="Delete" />
+        }
+
     </div>
-</div>

@@ -4,8 +4,6 @@
     ViewBag.Title = "BookTypes";
 }
 
-<link href="~/Content/Site.css" rel="stylesheet" />
-
 <div class="container">
     <h2>Booktypes</h2>
 
@@ -14,18 +12,15 @@
     </p>
             @foreach (var bookTypes in Model.BookTypes)
             {
-
                 <div class="col-xs-10 col-sm-10 col-lg-10 col-md-10 well well-sm">
-
                     @Html.Partial("BookTypeSummary", bookTypes)
                 </div>
-
             }
 
         </div>
         
 <div class="container">
-    <div class="pull-right">
+    <div class="pull-left">
         @Html.PageLinks(Model.PagingInfo, x => Url.Action("List", new { page = x }))
     </div>
 </div>

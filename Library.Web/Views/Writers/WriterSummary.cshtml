@@ -1,0 +1,27 @@
+﻿@model Library.Domain.Entities.Writer
+
+<div>
+    @if (Model.ImageData != null)
+    {
+        <div class="pull-left" style="margin-right: 10px">
+            <img class="img-thumbnail" width="75" height="75" src="@Url.Action("GetImage", "Writers", new { Model.WriterID })" />
+        </div>
+    }
+        
+        <h4>
+            @Model.Name
+        </h4>
+
+        <div>
+            @Model.Biography
+        </div>
+
+    <div class="col-xs-2 col-sm-2 col-lg-2 col-md-2 pull-right">
+        @using (Html.BeginForm("Delete", "Writers"))
+        {
+            @Html.Hidden("WriterID", Model.WriterID)
+            @Html.ActionLink("Edit", "Edit", new { writerId = Model.WriterID }, new { @class = "btn btn-warning" })
+            <input type="submit" class="btn btn-danger" value="Delete" />
+        }
+    </div>
+</div>

@@ -31,15 +31,8 @@ namespace Library.Web.Infrastructure
 
         private void AddBindings()
         {
-            Mock<IBookTypeRepository> mock = new Mock<IBookTypeRepository>();
-            mock.Setup(bt => bt.BookTypes).Returns(new List<BookType>
-            {
-                new BookType { Description = "Story" },
-                new BookType { Description = "Novel" },
-                new BookType { Description = "Biography" }
-            });
-
             kernel.Bind<IBookTypeRepository>().To<EFBookTypeRepository>();
+            kernel.Bind<IWriterRepository>().To<EFWriterRepository>();
         }
     }
 }

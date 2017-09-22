@@ -127,12 +127,13 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\BookTypesController.cs" />
+    <Compile Include="Controllers\WritersController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="HtmlHelpers\PagingHelpers .cs" />
     <Compile Include="Infrastructure\NinjectDependencyResolver.cs" />
-    <Compile Include="Models\AdminMenuItem.cs" />
+    <Compile Include="Models\WriterListViewModel.cs" />
     <Compile Include="Models\PagingInfo.cs" />
     <Compile Include="Models\BookTypesListViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -150,6 +151,9 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\BookTypes\BookTypeSummary.cshtml" />
     <Content Include="Views\BookTypes\Edit.cshtml" />
+    <Content Include="Views\Writers\List.cshtml" />
+    <Content Include="Views\Writers\WriterSummary.cshtml" />
+    <Content Include="Views\Writers\Edit.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

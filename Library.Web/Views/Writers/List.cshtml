@@ -1,0 +1,27 @@
+﻿@model Library.Web.Models.WriterListViewModel
+
+@{
+    ViewBag.Title = "List";
+}
+
+<div class="container">
+    <h2>Writers</h2>
+
+    <p>
+        @Html.ActionLink("Add", "Create", null, new { @class = "btn btn-primary" })
+    </p>
+    @foreach (var writers in Model.Writers)
+    {
+        <div class="col-xs-10 col-sm-10 col-lg-10 col-md-10 well well-sm">
+
+            @Html.Partial("WriterSummary", writers)
+        </div>
+    }
+
+</div>
+
+<div class="container">
+    <div class="pull-left">
+        @Html.PageLinks(Model.PagingInfo, x => Url.Action("List", new { page = x }))
+    </div>
+</div>

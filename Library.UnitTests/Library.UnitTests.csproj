@@ -33,6 +33,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
     </Reference>
@@ -49,6 +55,7 @@
       <HintPath>..\packages\Ninject.MVC3.3.0.0.6\lib\net45-full\Ninject.Web.Mvc.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
@@ -94,6 +101,7 @@
   <ItemGroup>
     <Compile Include="App_Start\NinjectWebCommon.cs" />
     <Compile Include="BookTests.cs" />
+    <Compile Include="CombosHelperTests.cs" />
     <Compile Include="ImageTests.cs" />
     <Compile Include="BookTypeTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -106,6 +114,10 @@
     <ProjectReference Include="..\Library.Domain\Library.Domain.csproj">
       <Project>{e1b9a6e7-6e15-4ae0-b7da-22174e9afae1}</Project>
       <Name>Library.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Library.Services\Library.Services.csproj">
+      <Project>{eae2023f-b437-447a-8403-33f1e3b1d9e4}</Project>
+      <Name>Library.Services</Name>
     </ProjectReference>
     <ProjectReference Include="..\Library.Web\Library.Web.csproj">
       <Project>{1a38fd89-54db-4af7-9ef1-cf84a0f7f07d}</Project>

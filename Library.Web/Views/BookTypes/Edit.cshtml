@@ -13,10 +13,11 @@
         @using (Html.BeginForm("Edit", "BookTypes"))
         {
             <div class="panel-body">
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
                 @Html.HiddenFor(m => m.BookTypeID)
                 @foreach (var property in ViewData.ModelMetadata.Properties)
                 {
-                    if (property.PropertyName != "BookTypeID")
+                    if (property.PropertyName == "Description")
                     {
                         <div class="form-group">
                             <label>@(property.DisplayName ?? property.PropertyName)</label>
@@ -28,7 +29,7 @@
                         </div>
                     }
 
-                    @Html.ValidationMessage(property.PropertyName)
+                    @Html.ValidationMessage(property.PropertyName, new { @class="text-danger"})
                 }
             </div>
             <div class="panel-footer">

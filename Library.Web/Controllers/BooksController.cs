@@ -2,6 +2,7 @@
 using Library.Domain.Entities;
 using Library.Services;
 using Library.Web.Models;
+using System;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -67,9 +68,23 @@ namespace Library.Web.Controllers
                     image.InputStream.Read(book.ImageData, 0, image.ContentLength);
                 }
 
-                repository.SaveBook(book);
-                TempData["message"] = string.Format($"{book.Title} has been saved.");
-                return RedirectToAction("List");
+                try
+                {
+                    repository.SaveBook(book);
+                    TempData["message"] = string.Format($"{book.Title} has been saved.");
+                    return RedirectToAction("List");
+                }
+                catch (Exception ex)
+                {
+                    if (ex.InnerException.InnerException.Message.Contains("UNIQUE"))
+                    {
+                        ModelState.AddModelError(string.Empty, $"The book {book.Title} could not be saved because one already exists with the same title.");
+                    }
+                    else
+                    {
+                        ModelState.AddModelError(string.Empty, ex.Message);
+                    }
+                }
             }
 
             // there is something wrong with the data values

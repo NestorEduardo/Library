@@ -19,10 +19,7 @@
 
                 @foreach (var property in ViewData.ModelMetadata.Properties)
                 {
-                    if (property.PropertyName != "WriterID" && property.PropertyName != "ImageData"
-                        && property.PropertyName != "ImageMimeType")
-                    {
-                        <div class="form-group">
+                    <div class="form-group">
                             @if (property.PropertyName == "Name")
                             {
                                 <label>@(property.DisplayName ?? property.PropertyName)</label>
@@ -34,12 +31,11 @@
                             @if (property.PropertyName == "Biography")
                             {
                                 <label>@(property.DisplayName ?? property.PropertyName)</label>
-                                @Html.TextBox(property.PropertyName, null, new { @class = "form-control" })
+                                @Html.TextArea(property.PropertyName, null, new { @class = "form-control" })
                             }
                         </div>
-                    }
 
-                    @Html.ValidationMessage(property.PropertyName)
+                    @Html.ValidationMessage(property.PropertyName, new { @class="text-danger"})
                 }
                 <div class="form-group">
                     <div style="position:relative;">

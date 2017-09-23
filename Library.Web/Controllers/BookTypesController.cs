@@ -1,6 +1,7 @@
 ﻿using Library.Domain.Abstract;
 using Library.Domain.Entities;
 using Library.Web.Models;
+using System;
 using System.Linq;
 using System.Web.Mvc;
 
@@ -44,9 +45,23 @@ namespace Library.Web.Controllers
         {
             if (ModelState.IsValid)
             {
-                repository.SaveBookType(bookType);
-                TempData["message"] = string.Format($"{bookType.Description} has been saved.");
-                return RedirectToAction("List");
+                try
+                {
+                    repository.SaveBookType(bookType);
+                    TempData["message"] = string.Format($"{bookType.Description} has been saved.");
+                    return RedirectToAction("List");
+                }
+                catch (Exception ex)
+                {
+                    if (ex.InnerException.InnerException.Message.Contains("UNIQUE"))
+                    {
+                        ModelState.AddModelError(string.Empty, $"The booktype {bookType.Description} could not be saved because one already exists with the same description.");
+                    }
+                    else
+                    {
+                        ModelState.AddModelError(string.Empty, ex.Message);
+                    }
+                }
             }
 
             // there is something wrong with the data values

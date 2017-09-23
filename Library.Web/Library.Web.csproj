@@ -158,6 +158,7 @@
     <Content Include="Views\Writers\Edit.cshtml" />
     <Content Include="Views\Books\List.cshtml" />
     <Content Include="Views\Books\BooksSummary.cshtml" />
+    <Content Include="Views\Books\Edit.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -172,6 +173,10 @@
     <ProjectReference Include="..\Library.Domain\Library.Domain.csproj">
       <Project>{e1b9a6e7-6e15-4ae0-b7da-22174e9afae1}</Project>
       <Name>Library.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Library.Services\Library.Services.csproj">
+      <Project>{eae2023f-b437-447a-8403-33f1e3b1d9e4}</Project>
+      <Name>Library.Services</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

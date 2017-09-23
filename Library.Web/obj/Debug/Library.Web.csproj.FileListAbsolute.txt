@@ -64,3 +64,6 @@ C:\Users\nesto\OneDrive\Documentos\Library\Library.Web\bin\EntityFramework.SqlSe
 C:\Users\nesto\OneDrive\Documentos\Library\Library.Web\bin\Library.Domain.dll.config
 C:\Users\nesto\OneDrive\Documentos\Library\Library.Web\bin\EntityFramework.xml
 C:\Users\nesto\OneDrive\Documentos\Library\Library.Web\bin\EntityFramework.SqlServer.xml
+C:\Users\nesto\OneDrive\Documentos\Library\Library.Web\bin\Library.Services.dll
+C:\Users\nesto\OneDrive\Documentos\Library\Library.Web\bin\Library.Services.pdb
+C:\Users\nesto\OneDrive\Documentos\Library\Library.Web\bin\Library.Services.dll.config

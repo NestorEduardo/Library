@@ -14,6 +14,10 @@
 
         public int WriterID { get; set; }
 
+        public string Plot { get; set; }
+
+        public string ISBN { get; set; }
+
         public byte[] ImageData { get; set; }
 
         public string ImageMimeType { get; set; }

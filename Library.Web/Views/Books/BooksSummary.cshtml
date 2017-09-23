@@ -12,14 +12,22 @@
             @Model.Title
         </h4>
 
+    <div>
+        <b>@Model.BookType.Description</b>
+    </div>
+
         <div>
-           
+           @Model.Writer.Name
         </div>
 
+    <div>
+        <p>@Model.Plot</p>
+    </div>
+
     <div class="col-xs-2 col-sm-2 col-lg-2 col-md-2 pull-right">
-        @using (Html.BeginForm("Delete", "Writers"))
+        @using (Html.BeginForm("Delete", "Books"))
         {
-            @Html.Hidden("WriterID", Model.BookID)
+            @Html.Hidden("BookID", Model.BookID)
             @Html.ActionLink("Edit", "Edit", new { bookId = Model.BookID }, new { @class = "btn btn-warning" })
             <input type="submit" class="btn btn-danger" value="Delete" />
         }
